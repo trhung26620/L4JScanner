@@ -69,9 +69,8 @@ payloads = {
 }
 thread = 10
 url = None
-
-requestFilePath = "D:\\FPT LEARNING\\Graduation Thesis\\Scanner\\My tool\\req.txt" 
-
+requestFilePath = None
+ 
 defaultHeader = {
     "User-Agent": "__PAYLOAD__",
     "X-Forwarded-For": "__PAYLOAD__",
@@ -104,6 +103,7 @@ modeList = {
     "2": "injectAllSequently"
 }
 mode = "1"
+notAffectedHeader = ["connection", "content-length", "host", "accept", "accept-encoding"]
 excludedHeader = ["connection", "content-length", "host", "accept", "accept-encoding"]
 isGetMethod = True
 query = None
@@ -128,18 +128,60 @@ class requestHandling:
 
 
 class util:
+    def showCurrentConfig():
+        cprint("[*] Current configuration","blue")
+        if HTTP_PROXY:
+            cprint("    [•] Enable proxy {} successfully!".format(HTTP_PROXY["http"]), "cyan")
+        if mode=="1":
+            cprint("    [•] Payload injection mode: Inject each payloads to all headers and data.", "cyan")
+        elif mode=="2":
+            cprint("    [•] Payload injection mode: Injects each payloads to headers and data sequently.", "cyan")
+        cprint("    [•] Thread: " + str(thread), "cyan")
+        if requestFilePath:
+            cprint("    [•] Analyze request from file: " + requestFilePath, "cyan")            
+        if query:
+            tempListQuery = []
+            for key,value in query.items():
+                for element in value:
+                    tempListQuery.append(key+"="+element)
+            stringQuery = "&".join(tempListQuery)            
+            cprint("    [•] URL: " + url + "?" + stringQuery, "cyan")
+        else:
+            cprint("    [•] URL: " + url, "cyan")
+        if isGetMethod:
+            cprint("    [•] Method: GET", "cyan")   
+        else:
+            cprint("    [•] Method: POST", "cyan")  
+        if headerDict:
+            headerString = ""
+            for header in list(headerDict.keys()):
+                headerString += header + ", "
+            cprint("    [•] Headers added: " + headerString[:-2], "cyan")
+        if excludedHeader:
+            excludedString = ""
+            for header in excludedHeader:
+                excludedString += header + ", "
+            cprint("    [•] Excluded headers: " + excludedString[:-2], "cyan")
+        if reqBody:
+            cprint("    [•] Body request: " + reqBody, "cyan")
+                    
     def checkExistedHeader(headersInFile):
         if isinstance(headersInFile, dict):
             listParam = list(headersInFile.keys())
-            listDefaultParam = list(defaultHeader.keys())
+            listDefaultParam = list(defaultHeader.keys())       
             for param in listParam:
-                if param.lower()=="user-agent":
-                    defaultHeader["User-Agent"] = headersInFile[param] + " " + defaultHeader["User-Agent"]
-                elif param not in listDefaultParam and param.lower() not in excludedHeader:
-                    defaultHeader[param] = headersInFile[param] + " __PAYLOAD__"
+                for defaultParam in listDefaultParam:
+                    if param.lower() == defaultParam.lower():
+                        defaultHeader[defaultParam] = headersInFile[param] + " " + defaultHeader[defaultParam]
+                        break
+                    if param not in listDefaultParam and param.lower() not in notAffectedHeader:
+                        defaultHeader[param] = headersInFile[param] + " __PAYLOAD__"
+                        break
+            for header in list(defaultHeader.keys()):
+                if header.lower() in excludedHeader:
+                    defaultHeader[header] = defaultHeader[header].replace(" __PAYLOAD__", "")              
         else:
             print("headersInFile ko phai la dict object")
-
 
     def analystRequestFile(filePath):
         isGetMethod = False
@@ -248,13 +290,19 @@ class userInteraction:
         parser.add_argument("--method", help="Specify GET or POST request method (default GET).", required=False)
         parser.add_argument("--interact-server", "-iserver", help="Specific an interact server (e.g. \"9u4ke6r6cn1gd1ctp40haucjlar0fp.burpcollaborator.net\").", required=False)
         parser.add_argument("--thread", "-t", help="Max number of concurrent HTTP(s) requests (default 10)", required=False)
+        parser.add_argument("--exclude-header", "-exheader", help="Exclude header parameters from fuzzing(e.g. \"User-Agent, Authorization\").", required=False)
         args = parser.parse_args()
         return args
 
     def argumentHandling(args):
-        global requestFilePath, isGetMethod, headerDict, reqBody, url, query, interact_url, thread, HTTP_PROXY
+        global requestFilePath, isGetMethod, headerDict, reqBody, url, query, interact_url, thread, HTTP_PROXY, excludedHeader
         if args.verbose:
             print("Enabling verbose mode")
+        if args.exclude_header:
+            excludedHeaderList = list()
+            for header in args.exclude_header.split(","):
+                excludedHeaderList.append(header.strip().lower())
+            excludedHeader += excludedHeaderList
         if args.file:
             requestFilePath = args.file
             dataList = list()
@@ -271,46 +319,48 @@ class userInteraction:
             if query:
                 url = url[:url.find('?')]
             util.checkExistedHeader(headerDict)
+        else:
+            if args.url:
+                headerDict = dict()
+                headerDict["User-Agent"] = "Chrome"
+                url = args.url
+                parsed_url = urlparse(url)
+                
+                query = parse_qs(parsed_url.query)
+                if query:
+                    url = url[:url.find('?')]
+            else:
+                print("Vui long cung cap URL")
+                exit()
+            if args.headers:
+                temp = dict()
+                for header in args.headers.split("\\n"):
+                    param = header.split(":")[0].strip()
+                    value = header.split(":")[1].strip()
+                    temp[param] = value 
+                headerDict.update(temp)
+                util.checkExistedHeader(headerDict)        
+            if args.data:
+                reqBody = args.data
+            if args.method:
+                if args.method.lower()=="post":
+                    isGetMethod = False
+                elif args.method.lower()=="get":
+                    isGetMethod = True
+                else:
+                    print("Chi ho tro GET va POST")
+                    exit()            
         if args.proxy:
             HTTP_PROXY = {
                 "http": args.proxy,
                 "https": args.proxy
             }        
-            print("Enable proxy " + args.proxy)
-        if args.url:
-            headerDict = dict()
-            headerDict["User-Agent"] = "Chrome"
-            url = args.url
-            parsed_url = urlparse(url)
-            
-            query = parse_qs(parsed_url.query)
-            if query:
-                url = url[:url.find('?')]
-        if args.headers:
-            temp = dict()
-            for header in args.headers.split("\\n"):
-                param = header.split(":")[0].strip()
-                value = header.split(":")[1].strip()
-                temp[param] = value 
-            headerDict.update(temp)
-            util.checkExistedHeader(headerDict)
-
-        if args.data:
-            reqBody = args.data
         if args.mode:
             global mode
             if args.mode=="1" or args.mode=="2":
                 mode = args.mode
             else: 
                 print("Vui long nhap mode 1 hoac 2")
-                exit()
-        if args.method:
-            if args.method.lower()=="post":
-                isGetMethod = False
-            elif args.method.lower()=="get":
-                isGetMethod = True
-            else:
-                print("Chi ho tro GET va POST")
                 exit()
         if args.interact_server:
             interact_url = args.interact_server    
@@ -577,19 +627,25 @@ class interactsh:
         if "registration successful" in r.content.decode():
             global interact_url
             interact_url = self.subdomain + "." + self.server
-            print("Registered interactsh successfully")
+            cprint("\n[*] Registered interactsh successfully", "blue")
+            cprint("    [•] Interact URL: " + interact_url, "cyan")
         else:
-            print("Registered fail")
+            cprint("\n[*] Error while registering interactsh", "red")
             exit()    
-    
     def pollData(self):
+        resJson = None
         query = "id={}&secret={}".format(self.correlation,self.secret)
         session = requests.Session()
         session.proxies.update(HTTP_PROXY)
         session.verify = False
         session.allow_redirects = True
-        r = session.get(url="https://interact.sh/poll?"+query, timeout=30)
-        resJson = r.json()
+        cprint("[*] Waiting for a response(up to 30 seconds)...\n","yellow")
+        for x in range(15):
+            time.sleep(2)
+            r = session.get(url="https://interact.sh/poll?"+query, timeout=30)
+            resJson = r.json()
+            if resJson["data"]:
+                break
         data = resJson["data"]
         aes_key = resJson["aes_key"]
         return data, aes_key
@@ -603,14 +659,15 @@ class interactsh:
     
     def decryptMessage(self, aes_Key, dataList):
         if dataList:
+            listPlainText = list()
             for data in dataList:
                 iv = base64.b64decode(data)[:16]
                 key = base64.b64decode(aes_Key)
                 cipher = AES.new(key, AES.MODE_CFB, iv, segment_size=128)
                 plainText = cipher.decrypt(base64.b64decode(data)[16:])
-                yield json.loads(plainText)
-        else:
-            print("khong co data")
+                listPlainText.append(json.loads(plainText))
+            return listPlainText
+        return None
 
 class result:
     def __init__(self, resposne, dataOOB): 
@@ -618,30 +675,30 @@ class result:
        self.dataOOB =  dataOOB
     
     def parsedDataOOB(self):
-        server = "interact.sh"
-        if self.dataOOB:
-            count = 1
-            for data in self.dataOOB:
-                host = data["full-id"]+"."+server
-                payloadCode = host.split(".")[-4]
-                param = host.split(".")[-5]
-                print("ID: {}| Time: {}| Type: {}| IP: {}| Param: {}|  Payload Code: {}| Host: {}".format(colored(str(count).ljust(4), "blue"), colored(data["timestamp"].ljust(33), "blue"), colored(data["protocol"].ljust(6), "blue"), colored(data["remote-address"].ljust(17), "blue"), colored(param.ljust(23), "blue"), colored(payloadCode.ljust(12), "blue"),colored(host, "blue")))                    
-                count+=1
-        else:
-            print("Khong co data tra ve")
+        if not self.dataOOB:
+            cprint("[*] No log4j vulnerability detected", "green")
             exit()
-        
+        cprint("[*] Detect log4j vulnerability", "yellow")
+        cprint("[*] Polled results", "yellow")
+        server = "interact.sh"
+        count = 1
+        for data in self.dataOOB:
+            host = data["full-id"]+"."+server
+            payloadCode = host.split(".")[-4]
+            param = host.split(".")[-5]
+            print("ID: {}| Time: {}| Type: {}| IP: {}| Param: {}|  Payload Code: {}| Host: {}".format(colored(str(count).ljust(4), "red"), colored(data["timestamp"].ljust(33), "red"), colored(data["protocol"].ljust(6), "red"), colored(data["remote-address"].ljust(17), "red"), colored(param.ljust(15), "red"), colored(payloadCode.ljust(12), "red"),colored(host, "red")))                    
+            count+=1
        
 
 def main():
     args = userInteraction.argument()
     userInteraction.argumentHandling(args)
+    util.showCurrentConfig()
     interact = interactsh()
     interact.register()
     replaceUrlPayload(interact_url, payloads)
     dataReqList = scanner.scanLog4j()
     util.runner(dataReqList)
-    time.sleep(10)
     data, aes_key = interact.pollData()
     key = interact.decryptAESKey(aes_key)
     dataList = interact.decryptMessage(key,data)
