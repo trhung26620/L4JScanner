@@ -15,3 +15,11 @@ Features
   cd Injection-Tool
   pip3 install -r requirements
 ```
+
+Usage
+```
+  If you only need to scan on an API
+  python3 L4JScanner –u http://domain.com –oob
+  cd Injection-Tool
+  pip3 install -r requirements
+```
