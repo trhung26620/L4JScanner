@@ -169,9 +169,9 @@ class customModeInjection:
                 if param.lower() not in excludedHeader:
                     for namePayload, payload in self.payloads.items():
                         payload = self.util.replaceParam(payload, param)
-                        temp = dictHeader.copy()
-                        temp[param] = temp[param] + " " + payload
-                        yield temp
+                        injectedHeader = dictHeader.copy()
+                        injectedHeader[param] = injectedHeader[param] + " " + payload
+                        yield injectedHeader
         else:
             print("Khong phai la dict object")
             self.util.saveResult("Khong phai la dict object")
@@ -181,15 +181,15 @@ class customModeInjection:
     def injectPayloadToSpecificHeader(self, dictHeader):
         if isinstance(dictHeader, dict):
             for namePayload, payload in self.payloads.items():
-                temp = dictHeader.copy()
+                injectedHeader = dictHeader.copy()
                 for param, value in dictHeader.items():
                     payload = self.util.replaceParam(payload, param)
                     if value.find("%FUZZ") > -1:
-                        temp[param] = value.replace("%FUZZ", payload)
+                        injectedHeader[param] = value.replace("%FUZZ", payload)
                         payload = self.payloads[namePayload]
                     else:
                         payload = self.payloads[namePayload]
-                yield temp
+                yield injectedHeader
         else:
             print("Khong phai la dict object")
             self.util.saveResult("Khong phai la dict object")
@@ -262,4 +262,16 @@ class customModeInjection:
         else:
             print("Khong phai la dict object")
             self.util.saveResult("Khong phai la dict object")
+            exit()
+
+    def injectPayloadToPath(self, url):
+        if isinstance(url, str):
+            if url.find("FUZZ") > -1:
+                for namePayload, payload in self.payloads.items():
+                    temp = url
+                    temp.replace("FUZZ", payload)
+                    yield temp
+        else:
+            print("Khong phai la string object")
+            self.util.saveResult("Khong phai la string object")
             exit()

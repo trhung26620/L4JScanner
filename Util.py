@@ -192,11 +192,19 @@ class util:
         threads= []
         with ThreadPoolExecutor(max_workers=thread) as executor:
             if isGetMethod:
-                for dataReq in dataReqList:
-                    threads.append(executor.submit(requestHandling.sendGetRequest, dataReq["header"], dataReq["body"], dataReq["query"],url, HTTP_PROXY))
+                if isinstance(url, str):
+                    for dataReq in dataReqList:
+                        threads.append(executor.submit(requestHandling.sendGetRequest, dataReq["header"], dataReq["body"], dataReq["query"],url, HTTP_PROXY))
+                elif isinstance(url, list):
+                    for x in url:
+                        threads.append(executor.submit(requestHandling.sendGetRequest, dataReqList["header"], dataReqList["body"], dataReqList["query"], x, HTTP_PROXY))
             else:
-                for dataReq in dataReqList:
-                    threads.append(executor.submit(requestHandling.sendPostRequest, dataReq["header"], dataReq["body"], dataReq["query"],url, HTTP_PROXY))
+                if isinstance(url, str):
+                    for dataReq in dataReqList:
+                        threads.append(executor.submit(requestHandling.sendPostRequest, dataReq["header"], dataReq["body"], dataReq["query"],url, HTTP_PROXY))
+                elif isinstance(url, list):
+                    for x in url:
+                        threads.append(executor.submit(requestHandling.sendPostRequest, dataReqList["header"], dataReqList["body"], dataReqList["query"], x, HTTP_PROXY))
 
     # Hàm replace keyword __interactsh_url__ trong các payloads và thay nó thành một url của interact-sh đã đăng ký hoặc người dùng cung cấp
     def replaceUrlPayload(self, interact_url, payloadDict):
@@ -211,10 +219,10 @@ class util:
             self.outputFile.write(data + "\n")
 
     # Hàm trả về object File đã open cho việc lưu output
-    def updateOutputFileVar(self):
-        return self.outputFile
+    # def updateOutputFileVar(self):
+    #     return self.outputFile
 
-    # Hàm replace keyword replaceParam trong các payloads và thay nó thành giá trị cung cấp (trong trường sử dụng để lấy tên param của request gắn vào các payloads)
+    # Hàm replace keyword __param__ trong các payloads và thay nó thành giá trị cung cấp (trong trường sử dụng để lấy tên param của request gắn vào các payloads)
     def replaceParam(payload, output):
         if payload.find("__param__") > -1:
             payload = payload.replace("__param__", output)

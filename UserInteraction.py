@@ -30,24 +30,34 @@ class userInteraction:
         self.args = parser.parse_args()
 
     # Lấy các option người dùng input và setup cấu hình cho tool.
-    def argumentHandling(self, requestFilePath, isGetMethod, headerDict, reqBody, url, query, interact_url, thread, HTTP_PROXY, excludedHeader, outputFile, verboseInf, isOOBVector, injectAllHeader, defaultHeader, payloads, mode, notAffectedHeader):
+    def argumentHandling(self, thread, excludedHeader, defaultHeader, payloads, mode, notAffectedHeader):
         if self.args.output_file:
             outputFile = open(self.args.output_file, "w")
+        else:
+            outputFile = None
         myUtil = util(outputFile)
         if self.args.verbose:
             verboseInf = True
+        else:
+            verboseInf = False
         if self.args.payload_file:
             payloads = myUtil.loadCustomPayloads(self.args.payload_file)
         if self.args.interact_server:
             interact_url = self.args.interact_server
             isOOBVector = True
+        else:
+            interact_url = None
+            isOOBVector = False
         if self.args.OOB_vector:
             isOOBVector = True
+        else: isOOBVector = False
         if self.args.proxy:
             HTTP_PROXY = {
                 "http": self.args.proxy,
                 "https": self.args.proxy
             }
+        else:
+            HTTP_PROXY = {}
         if self.args.mode:
             if self.args.mode=="1" or self.args.mode=="2" or self.args.mode=="3":
                 mode = self.args.mode
@@ -61,6 +71,7 @@ class userInteraction:
             injectAllHeader = True
         else:
             defaultHeader = {}
+            injectAllHeader = False
         if self.args.exclude_header:
             excludedHeaderList = list()
             for header in self.args.exclude_header.split(","):
@@ -75,7 +86,6 @@ class userInteraction:
                 headerDict["User-Agent"] = "Chrome"
                 url = self.args.url
                 parsed_url = urlparse(url)
-
                 query = parse_qs(parsed_url.query)
                 if query:
                     url = url[:url.find('?')]
@@ -93,6 +103,8 @@ class userInteraction:
                 myUtil.checkExistedHeader(defaultHeader, notAffectedHeader, excludedHeader, headerDict)
             if self.args.data:
                 reqBody = self.args.data
+            else:
+                reqBody = None
             if self.args.method:
                 if self.args.method.lower()=="post":
                     isGetMethod = False
@@ -102,5 +114,7 @@ class userInteraction:
                     print("Chi ho tro GET va POST")
                     myUtil.saveResult("Chi ho tro GET va POST")
                     exit()
+            else:
+                isGetMethod = False
 
-        return requestFilePath, isGetMethod, headerDict, reqBody, url, query, interact_url, thread, HTTP_PROXY, excludedHeader, outputFile, verboseInf, isOOBVector, injectAllHeader, defaultHeader, payloads, myUtil, mode
+        return isGetMethod, headerDict, reqBody, url, query, interact_url, thread, HTTP_PROXY, excludedHeader, outputFile, verboseInf, isOOBVector, injectAllHeader, defaultHeader, payloads, myUtil, mode

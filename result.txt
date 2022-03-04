@@ -2,7 +2,6 @@
     [•] Enable proxy http://127.0.0.1:8080 successfully!
     [•] Payload injection mode: Injects each payloads to headers and data sequently.
     [•] Thread: 10
-    [•] Analyze request from file: .\req.txt
     [•] Excluded headers: connection, content-length, host, accept, accept-encoding, accept-language
 
 [*] Loaded payload list
@@ -14,132 +13,43 @@
 
 
 [*] Request details
-    [•] URL: http://13.250.112.201:8001/search?name=Vans  %FUZZHTTP/1.1
-    [•] Method: GET
-    [•] Headers added: Host, User-Agent, Accept, Accept-Language, Accept-Encoding, Connection, Upgrade-Insecure-Requests, X-Forwarded-For, hungtn
-    [•] Body request: user=admin%FUZZ&pass=123 %FUZZ
-
-[*] Registered interactsh successfully
-    [•] Interact URL: n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-
-[*] Waiting for a response(up to 20 seconds)...
-
-[*] Detect log4j vulnerability
-[*] Polled results from the interact server:
-
-ID: 1   | Time: 2022-02-23T16:28:36.757755316Z   | Type: dns   | IP: 3.0.5.231        | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 2   | Time: 2022-02-23T16:28:36.758155529Z   | Type: dns   | IP: 3.0.5.229        | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 3   | Time: 2022-02-23T16:28:36.762779069Z   | Type: dns   | IP: 13.250.186.208   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 4   | Time: 2022-02-23T16:28:36.76621984Z    | Type: dns   | IP: 18.140.177.41    | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 5   | Time: 2022-02-23T16:28:37.001884109Z   | Type: dns   | IP: 18.140.177.41    | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 6   | Time: 2022-02-23T16:28:37.005424165Z   | Type: dns   | IP: 13.250.186.208   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 7   | Time: 2022-02-23T16:28:37.14028939Z    | Type: dns   | IP: 13.250.186.208   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 8   | Time: 2022-02-23T16:28:37.143158508Z   | Type: dns   | IP: 18.140.177.41    | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 9   | Time: 2022-02-23T16:28:37.380424061Z   | Type: dns   | IP: 13.229.187.213   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 10  | Time: 2022-02-23T16:28:37.384364863Z   | Type: dns   | IP: 13.229.187.194   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 11  | Time: 2022-02-23T16:28:37.384715811Z   | Type: dns   | IP: 3.0.5.231        | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 12  | Time: 2022-02-23T16:28:37.455457002Z   | Type: dns   | IP: 13.229.187.207   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 13  | Time: 2022-02-23T16:28:37.617604144Z   | Type: dns   | IP: 13.229.187.213   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 14  | Time: 2022-02-23T16:28:37.631493559Z   | Type: dns   | IP: 13.229.187.194   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 15  | Time: 2022-02-23T16:28:37.686625826Z   | Type: dns   | IP: 13.229.187.207   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 16  | Time: 2022-02-23T16:28:37.691640923Z   | Type: dns   | IP: 13.229.187.218   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 17  | Time: 2022-02-23T16:28:37.760412408Z   | Type: dns   | IP: 13.229.187.194   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 18  | Time: 2022-02-23T16:28:37.856645341Z   | Type: dns   | IP: 13.229.187.218   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 19  | Time: 2022-02-23T16:28:37.857509623Z   | Type: dns   | IP: 3.0.5.229        | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 20  | Time: 2022-02-23T16:28:37.85856578Z    | Type: dns   | IP: 3.0.5.229        | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 21  | Time: 2022-02-23T16:28:37.861292383Z   | Type: dns   | IP: 13.229.187.218   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 22  | Time: 2022-02-23T16:28:37.923932725Z   | Type: dns   | IP: 13.229.187.218   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 23  | Time: 2022-02-23T16:28:38.09075505Z    | Type: dns   | IP: 13.229.187.218   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-ID: 24  | Time: 2022-02-23T16:28:38.102590069Z   | Type: dns   | IP: 13.229.187.218   | Param: name           |  Payload Code: log4j_cve22 | Host: xf.name.log4j_cve22.n7al4o62poj4y9mpcytgbc64ugvysz5yw.interact.sh
-
-
-====================================================================================================================================================================================
-
-
-[*] Request details
     [•] URL: http://13.250.112.201:8001/
     [•] Method: POST
-    [•] Headers added: Host, User-Agent, Accept, Accept-Language, Accept-Encoding, Connection, Upgrade-Insecure-Requests, X-Forwarded-For, hungtn
+    [•] Headers added: User-Agent
 
 [*] Registered interactsh successfully
-    [•] Interact URL: xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
+    [•] Interact URL: rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
 
 [*] Waiting for a response(up to 20 seconds)...
 
 [*] Detect log4j vulnerability
 [*] Polled results from the interact server:
 
-ID: 1   | Time: 2022-02-23T16:28:48.75851255Z    | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 2   | Time: 2022-02-23T16:28:48.758061754Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 3   | Time: 2022-02-23T16:28:48.743246983Z   | Type: dns   | IP: 13.229.187.218   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 4   | Time: 2022-02-23T16:28:48.760156089Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 5   | Time: 2022-02-23T16:28:48.993818759Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 6   | Time: 2022-02-23T16:28:48.998694222Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 7   | Time: 2022-02-23T16:28:49.235684183Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 8   | Time: 2022-02-23T16:28:49.236214674Z   | Type: dns   | IP: 13.229.187.213   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 9   | Time: 2022-02-23T16:28:49.471676075Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 10  | Time: 2022-02-23T16:28:49.474998832Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 11  | Time: 2022-02-23T16:28:49.474969895Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 12  | Time: 2022-02-23T16:28:49.476405628Z   | Type: dns   | IP: 13.229.187.218   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 13  | Time: 2022-02-23T16:28:49.476383808Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 14  | Time: 2022-02-23T16:28:49.478559029Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 15  | Time: 2022-02-23T16:28:49.488149771Z   | Type: dns   | IP: 13.229.187.213   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 16  | Time: 2022-02-23T16:28:49.616928643Z   | Type: dns   | IP: 13.229.187.213   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 17  | Time: 2022-02-23T16:28:49.706772321Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 18  | Time: 2022-02-23T16:28:49.719910254Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 19  | Time: 2022-02-23T16:28:49.719803509Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 20  | Time: 2022-02-23T16:28:49.72071358Z    | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 21  | Time: 2022-02-23T16:28:49.730743925Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 22  | Time: 2022-02-23T16:28:49.721775527Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 23  | Time: 2022-02-23T16:28:49.733513448Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 24  | Time: 2022-02-23T16:28:49.734553947Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 25  | Time: 2022-02-23T16:28:49.736357892Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 26  | Time: 2022-02-23T16:28:49.846695244Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 27  | Time: 2022-02-23T16:28:49.85074831Z    | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-ID: 28  | Time: 2022-02-23T16:28:49.870996851Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.xyj59lk0zw2q7r6j2oc594yy0nkpg707r.interact.sh
-
-
-====================================================================================================================================================================================
-
-
-[*] Request details
-    [•] URL: http://13.250.112.201:8001/
-    [•] Method: POST
-    [•] Headers added: Host, User-Agent, Accept, Accept-Language, Accept-Encoding, Connection, Upgrade-Insecure-Requests, X-Forwarded-For
-    [•] Body request: {"user1": "admin","pass1":"123%FUZZ"}
-
-[*] Registered interactsh successfully
-    [•] Interact URL: 2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-
-[*] Waiting for a response(up to 20 seconds)...
-
-[*] Detect log4j vulnerability
-[*] Polled results from the interact server:
-
-ID: 1   | Time: 2022-02-23T16:29:01.053466566Z   | Type: dns   | IP: 13.229.187.218   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 2   | Time: 2022-02-23T16:29:01.055041072Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 3   | Time: 2022-02-23T16:29:01.055565352Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 4   | Time: 2022-02-23T16:29:01.056138046Z   | Type: dns   | IP: 13.229.187.213   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 5   | Time: 2022-02-23T16:29:01.285355521Z   | Type: dns   | IP: 13.229.187.213   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 6   | Time: 2022-02-23T16:29:01.288741558Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 7   | Time: 2022-02-23T16:29:01.519702738Z   | Type: dns   | IP: 13.229.187.218   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 8   | Time: 2022-02-23T16:29:01.523089362Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 9   | Time: 2022-02-23T16:29:01.758616489Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 10  | Time: 2022-02-23T16:29:01.759114666Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 11  | Time: 2022-02-23T16:29:01.76750384Z    | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 12  | Time: 2022-02-23T16:29:01.769037902Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 13  | Time: 2022-02-23T16:29:01.77076249Z    | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 14  | Time: 2022-02-23T16:29:01.772140837Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 15  | Time: 2022-02-23T16:29:01.77276359Z    | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 16  | Time: 2022-02-23T16:29:01.773587177Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 17  | Time: 2022-02-23T16:29:02.000893321Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 18  | Time: 2022-02-23T16:29:02.002650777Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 19  | Time: 2022-02-23T16:29:02.003866811Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 20  | Time: 2022-02-23T16:29:02.005293183Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 21  | Time: 2022-02-23T16:29:02.012505229Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 22  | Time: 2022-02-23T16:29:02.012530917Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 23  | Time: 2022-02-23T16:29:02.015288517Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 24  | Time: 2022-02-23T16:29:02.015457546Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 25  | Time: 2022-02-23T16:29:02.016032104Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 26  | Time: 2022-02-23T16:29:02.145632707Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
-ID: 27  | Time: 2022-02-23T16:29:02.244739432Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.2p8qn8miq4jrfa5n3q6tzyakkkf3n2btf.interact.sh
+ID: 1   | Time: 2022-03-04T05:04:47.587610758Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 2   | Time: 2022-03-04T05:04:47.588776309Z   | Type: dns   | IP: 13.229.187.213   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 3   | Time: 2022-03-04T05:04:47.589386015Z   | Type: dns   | IP: 13.229.187.218   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 4   | Time: 2022-03-04T05:04:47.59183784Z    | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 5   | Time: 2022-03-04T05:04:47.825756677Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 6   | Time: 2022-03-04T05:04:47.827046703Z   | Type: dns   | IP: 13.229.187.218   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 7   | Time: 2022-03-04T05:04:47.963914395Z   | Type: dns   | IP: 3.0.5.229        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 8   | Time: 2022-03-04T05:04:47.965752438Z   | Type: dns   | IP: 13.229.187.218   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 9   | Time: 2022-03-04T05:04:48.203531535Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 10  | Time: 2022-03-04T05:04:48.204007575Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 11  | Time: 2022-03-04T05:04:48.205036031Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 12  | Time: 2022-03-04T05:04:48.206314622Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 13  | Time: 2022-03-04T05:04:48.206040564Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 14  | Time: 2022-03-04T05:04:48.208307696Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 15  | Time: 2022-03-04T05:04:48.208871886Z   | Type: dns   | IP: 18.140.177.41    | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 16  | Time: 2022-03-04T05:04:48.434868381Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 17  | Time: 2022-03-04T05:04:48.43592669Z    | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 18  | Time: 2022-03-04T05:04:48.43664946Z    | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 19  | Time: 2022-03-04T05:04:48.437840063Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 20  | Time: 2022-03-04T05:04:48.440245689Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 21  | Time: 2022-03-04T05:04:48.441709684Z   | Type: dns   | IP: 13.229.187.213   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 22  | Time: 2022-03-04T05:04:48.443673786Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 23  | Time: 2022-03-04T05:04:48.449959615Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 24  | Time: 2022-03-04T05:04:48.579052912Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 25  | Time: 2022-03-04T05:04:48.579592014Z   | Type: dns   | IP: 13.229.187.194   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 26  | Time: 2022-03-04T05:04:48.585674018Z   | Type: dns   | IP: 13.229.187.207   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 27  | Time: 2022-03-04T05:04:48.587775059Z   | Type: dns   | IP: 13.250.186.208   | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
+ID: 28  | Time: 2022-03-04T05:04:48.594212775Z   | Type: dns   | IP: 3.0.5.231        | Param: User-Agent     |  Payload Code: log4j_cve22 | Host: xf.User-Agent.log4j_cve22.rxr7hwxx17y1hm91vybc69d65666g8btr.interact.sh
