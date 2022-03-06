@@ -6,7 +6,7 @@ L4JScanner was originally a tool used to detect security holes in the Log4j libr
   <br>
   <br>
   L4JScanner
-  ![Untitled1](https://user-images.githubusercontent.com/65553646/156766970-1e0ff539-cada-4596-a4e9-00286f176b90.png)
+  ![Untitled2](https://user-images.githubusercontent.com/65553646/156910493-521caa29-7466-4923-a051-c8d7bf4105c4.png)
 
 # Features
   Support for lists of URLs. (will develop later)<br>
