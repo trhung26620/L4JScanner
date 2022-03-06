@@ -11,6 +11,12 @@ class util:
     def __init__(self, outputFile):
         self.outputFile = outputFile
 
+    # Load introduction
+    def loadIntro(self):
+        banner = '    __   __ __      _______                                 \n   / /  / // /     / / ___/_________ _____  ____  ___  _____\n  / /  / // /___  / /\\__ \\/ ___/ __ `/ __ \\/ __ \\/ _ \\/ ___/\n / /__/__  __/ /_/ /___/ / /__/ /_/ / / / / / / /  __/ /    \n/_____/ /_/  \\____//____/\\___/\\__,_/_/ /_/_/ /_/\\___/_/     \n\n'
+        cprint('\n'.join(l.center(80) for l in banner.splitlines()), 'magenta', attrs=['bold'])
+        cprint(''.ljust(30) + "L4JScanner v2.1.0", 'magenta')
+
     # Khi tool chạy, hàm này in ra cấu hình chung của của scanner cho toàn quá trình chạy
     def showCurrentConfig(self, HTTP_PROXY, mode, requestFilePath, excludedHeader, verboseInf, thread, payloads, util):
         cprint("[*] Current configuration","blue")

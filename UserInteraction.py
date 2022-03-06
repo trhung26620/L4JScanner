@@ -24,7 +24,7 @@ class userInteraction:
         parser.add_argument("--thread", "-t", help="Max number of concurrent HTTP(s) requests (default 10)", required=False)
         parser.add_argument("--exclude-header", "-exheader", help="Exclude header parameters from fuzzing(e.g. \"User-Agent, Authorization\").", required=False)
         parser.add_argument("--output-file", "-o", help="Specific file to save result.", required=False)
-        parser.add_argument("--payload-file", "-pf", help="Specific file to load customized payloads (follow the dictionary format).", required=False)
+        parser.add_argument("--payload-file", "-pf", help="Specific file to load customized payloads.", required=False)
         parser.add_argument("--OOB-vector", "-oob", help="Inject interact-sh server to payloads.", required=False, action="store_true")
         parser.add_argument("--all-headers", "-ah", help="Add all headers to request.", required=False, action="store_true")
         self.args = parser.parse_args()

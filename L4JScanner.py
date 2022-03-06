@@ -220,6 +220,7 @@ def scanFlow():
 def main():
     global outputFile
     updateConfig()
+    myUtil.loadIntro()
     myUtil.showCurrentConfig(HTTP_PROXY, mode, requestFilePath, excludedHeader, verboseInf, thread, payloads, myUtil)
     scanFlow()
     # Điều kiện xảy ra khi dùng option lưu output vào file (-o --output-file), code dưới dùng để đóng file trước khi tool scan kết thúc.
